@@ -1,27 +1,8 @@
+
 import 'package:flutter/material.dart';
 
-import 'modul_02/academic_dashboard_screen.dart';
+import 'modul_06/modul_06_app.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Modul06App());
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Academic Dashboard',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-        ),
-        useMaterial3: true,
-      ),
-      home: const AcademicDashboardScreen(),
-    );
-  }
-}
-
