@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../modul_04/models/announcement.dart';
 import '../providers/announcement_provider.dart';
 
 class PengayaanListScreen extends ConsumerWidget {
