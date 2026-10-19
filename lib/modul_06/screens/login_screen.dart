@@ -119,25 +119,56 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Modul 06 — Login'),
+        toolbarHeight: 100,
+        title: const Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              'Modul 06 — Login',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.normal,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Masuk ke Portal Kampus',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
         centerTitle: true,
       ),
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 420),
-              child: _sesi == null
-                  ? _formLogin()
-                  : KartuSesi(
-                      sesi: _sesi!,
-                      sekarang: widget.jam(),
-                      onKeluar: _keluar,
-                      sedangKeluar: _sedangKeluar,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              padding: const EdgeInsets.all(24),
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight - 48,
+                ),
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(
+                      maxWidth: 420,
                     ),
-            ),
-          ),
+                    child: _sesi == null
+                        ? _formLogin()
+                        : KartuSesi(
+                            sesi: _sesi!,
+                            sekarang: widget.jam(),
+                            onKeluar: _keluar,
+                            sedangKeluar: _sedangKeluar,
+                          ),
+                  ),
+                ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -147,6 +178,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Form(
       key: _formKey,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Icon(
@@ -215,7 +247,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ? const SizedBox(
                     width: 20,
                     height: 20,
-                    child: CircularProgressIndicator(strokeWidth: 2),
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ),
                   )
                 : const Text('Masuk'),
           ),
